@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,17 +20,21 @@
             height: 100vh;
             overflow: hidden;
         }
+        
         h1 {
             font-size: 3rem;
             margin: 0;
         }
+        
         p {
             font-size: 1.5rem;
             margin: 20px 0;
         }
+        
         .button-container {
             margin-top: 30px;
         }
+        
         button {
             padding: 15px 30px;
             font-size: 1.2rem;
@@ -41,34 +45,101 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        
         button:hover {
             transform: scale(1.1);
             background-color: #ffe5ec;
         }
+        
         #background-music {
-            display: block;
+            display: none;
+        }
+        
+        .custom-prompt {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .custom-prompt h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .custom-prompt button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff758c;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-prompt button:hover {
+            transform: scale(1.1);
+            background-color: #ff9cbb;
         }
     </style>
 </head>
+
 <body>
     <h1>Hey Baby,</h1>
-    <p>Nnenna you make every day special, and this Valentine’s Day, I want to make it even more special.</p>
+    <p>Nnenna, you make every day special, and this Valentine’s Day, I want to make it even more special.</p>
     <h2>Will you be my Valentine?</h2>
     <div class="button-container">
         <button onclick="showResponse('yes')">Yes</button>
         <button onclick="showResponse('no')">No</button>
     </div>
-    <audio id="background-music" autoplay loop>
-    <source src="audio.mp3" type="audio/mp3">
-</audio>
-    
-    <script>       
+    <audio id="background-music" autoplay controls muted loop>
+        <source src="audio.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="custom-prompt" id="custom-prompt">
+        <h2>Are you ready to start this amazing experience?</h2>
+        <button onclick="startExperience()">Yes</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            showCustomPrompt();
+        };
+
+        function showCustomPrompt() {
+            const prompt = document.getElementById("custom-prompt");
+            prompt.style.display = "flex";
+        }
+
+        function startExperience() {
+            const audio = document.getElementById("background-music");
+            audio.play().then(() => {
+                audio.muted = false;
+            }).catch(error => {
+                console.error("Autoplay issue:", error);
+                alert("Could not play the audio. Please check your settings.");
+            });
+
+            const prompt = document.getElementById("custom-prompt");
+            prompt.style.display = "none";
+        }
+
         function showResponse(response) {
-            const message = response === 'yes' ? 
-                'Yesss!! thats my babyy, Nnenna! ❤️' : 
+            const message = response === 'yes' ?
+                'Yesss!! thats my babyy, Nnenna! ❤' :
                 'No??? Better go back and click Yes. 😅';
             alert(message);
         }
     </script>
 </body>
+
 </html>
