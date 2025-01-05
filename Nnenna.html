@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        .button-container {
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #ff758c;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background-color: #ffe5ec;
+        }
+        #background-music {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello Nnenna,</h1>
+    <p>You make every day special, and this Valentine’s Day, I want to make it even more special.</p>
+    <h2>Will you be my Valentine?</h2>
+    <div class="button-container">
+        <button onclick="showResponse('yes')">Yes</button>
+        <button onclick="showResponse('no')">No</button>
+    </div>
+    <audio id="background-music" autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        function showResponse(response) {
+            const message = response === 'yes' ? 
+                'You just made my day, Nnenna! ❤️' : 
+                'Oh no! But I still think you’re amazing. 😅';
+            alert(message);
+        }
+    </script>
+</body>
+</html>
