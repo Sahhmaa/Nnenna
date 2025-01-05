@@ -46,7 +46,7 @@
             background-color: #ffe5ec;
         }
         #background-music {
-            display: block;
+            display: none;
         }
     </style>
 </head>
@@ -58,10 +58,14 @@
         <button onclick="showResponse('yes')">Yes</button>
         <button onclick="showResponse('no')">No</button>
     </div>
-   <audio id="background-music" controls autoplay loop>
+   <audio id="background-music" class="myaudio" controls autoplay loop>
     <source src="audio.mp3" type="audio/mp3">
 </audio>
     <script>
+        window.onload = function(){
+            var audio = document.querySelectorAll(".myaudio");
+            audio.play();
+        }
         function showResponse(response) {
             const message = response === 'yes' ? 
                 'Yesss!! thats my babyy, Nnenna! ❤️' : 
