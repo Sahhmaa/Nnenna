@@ -90,16 +90,23 @@
             transform: scale(1.1);
             background-color: #ff9cbb;
         }
+
+        .blurred {
+            filter: blur(10px);
+            pointer-events:none;
+        }
     </style>
 </head>
 
 <body>
+    <div id="content" class="blurred">
     <h1>Hey Baby,</h1>
     <p>Nnenna, you make every day special, and this Valentine’s Day, I want to make it even more special.</p>
     <h2>Will you be my Valentine?</h2>
     <div class="button-container">
         <button onclick="showResponse('yes')">Yes</button>
         <button onclick="showResponse('no')">No</button>
+    </div>
     </div>
     <audio id="background-music" autoplay controls muted loop>
         <source src="audio.mp3" type="audio/mp3">
@@ -131,6 +138,9 @@
 
             const prompt = document.getElementById("custom-prompt");
             prompt.style.display = "none";
+
+            const content = document.getElementById("content");
+            content.classList.remove("blurred");
         }
 
         function showResponse(response) {
